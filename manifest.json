@@ -3,7 +3,7 @@
     "name": "DuckDuckBang!",
     "version": "0.1.1",
     
-    "description": "Allows you to use DuckDuckGo !bangs on Google, Yahoo!, and Bing.",
+    "description": "Allows you to use DuckDuckGo !bangs on Google, Yahoo!, Ecosia, and Bing.",
     
     "icons": {
         "16": "/duckduckbang.svg",
