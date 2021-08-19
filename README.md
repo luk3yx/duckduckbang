@@ -24,4 +24,4 @@ Example search terms:
 
  - If you do not use any of the above:
  Install a user script manager, then click [here](https://gist.github.com/luk3yx/a8a3fa2d5a02ca9d55cfa3210d7a9ae1/raw/duckduckbang.user.js) to install the user script wrapper. You can view the source for this user script [here](https://gist.github.com/luk3yx/a8a3fa2d5a02ca9d55cfa3210d7a9ae1).
- *Note that this extension downloads the script from this repository.*
+ *Note that this user script downloads code from this repository.*
