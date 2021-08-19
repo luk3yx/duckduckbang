@@ -1,7 +1,7 @@
 //
 // DuckDuckBang! Firefox Add-on
 //
-// Version 0.1.2
+// Version 0.1.3
 //
 // The MIT License
 //
@@ -33,35 +33,46 @@ var duckduckbang = true;
 // NOTE: They must be 1 character long.
 // Type: Array
 // Default: ["\\", "!"]
-var prefixes = ["\\", "!"];
+const prefixes = ["\\", "!"];
 
 // Set the DuckDuckGo URL. The search term will be appended to the url.
 // Type: String
 // Default: "https://duckduckgo.com/?q="
-var url = "https://duckduckgo.com/?q=";
+const url = "https://duckduckgo.com/?q=";
 
 // Possible query prefixes
 var queries = ['&q', '?q', '?p', '#q'];
 
 // Check a URL then redirect to it
-function go() {
+async function go() {
     var i = -1;
-    for (var c = 0; c < queries.length; c++) {
-        i = window.location.href.indexOf(queries[c] + '=');
-        if (i > 0) {
+    for (let query of queries) {
+        i = window.location.href.indexOf(query + '=');
+        if (i > 0)
             break;
-        }
     }
 
-    if (i < 1) {
+    if (i < 1)
+        return;
+
+    const search = decodeURIComponent(
+        window.location.href.substr(i + 3).split('&')[0]
+    );
+
+    // Scan for !bangs / \searches at the start of the query
+    if (prefixes.includes(search.substr(0, 1))) {
+        window.location.href = url + search;
         return;
     }
 
-    var search = window.location.href.substr(i + 3).split('&')[0];
+    // Return now in case this is being run from a user script
+    if (typeof browser === "undefined" || !browser.storage)
+        return;
 
-    prefix = decodeURIComponent(search).substr(0, 1);
-
-    if (prefixes.includes(prefix)) {
+    // Scan for !bangs
+    const options = await browser.storage.sync.get("allow_bangs_anywhere");
+    if (options.allow_bangs_anywhere &&
+            search.match(/^[^"]*(?:"[^"]*"[^"]*)*\!/)) {
         window.location.href = url + search;
     }
 }

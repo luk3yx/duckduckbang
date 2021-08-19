@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="options.js"></script>
+</head>
+<body>
+    <form>
+        <label><input type="checkbox" id="allow-bangs-anywhere"> Allow bangs anywhere in the query</label>
+        <p>
+            By default, !bangs are only redirected if they are at the start of
+            the search. Enabling this will make this add-on scan the entire
+            search query for !bangs, however this may lead to some "false
+            positive" redirects.
+        </p>
+        <p id="msg" style="transition: ease-in-out 250ms; opacity: 0; font-style: italic;">Unchanged</p>
+    </form>
+</body>
+</html>
