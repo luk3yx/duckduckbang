@@ -2,6 +2,8 @@
 
 A Firefox addon that allows you to use !bangs in Google, Yahoo!, Bing, and Ecosia.
 
+**This add-on is in maintenance mode as I have switched to using DuckDuckGo.**
+
 ## What does it do?
 
 This addon redirects any search you do (Google search, Yahoo! search, Ecosia, and Bing) that begins with `!` or `\` to DuckDuckGo. DuckDuckGo then processes these as bangs (`!`) and I'm feeling Ducky (`\`) submissions.
